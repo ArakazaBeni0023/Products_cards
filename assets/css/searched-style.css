@@ -1,0 +1,342 @@
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding-inline: 2rem;
+    box-shadow: 0px 2px 6px #f1f1f1;
+    background: #fff;
+
+}
+
+.left-side {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.header .brand {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: 14px;
+}
+
+.brand-name span {
+    color: #ffce51;
+}
+
+.header .brand .logo {
+    width: 60px;
+    height: 60px;
+    background: #f1f1f1;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.search-input {
+    all: unset;
+    border-radius: 50px;
+    background: #fff;
+    width: 60%;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    box-shadow: 0px 2px 6px #e6e5e53f;
+    transition: background .5s ease, border .5s ease;
+    border: 1px solid #eee;
+    overflow: hidden;
+    color: #21212170;
+}
+
+.search-input:hover,
+.search-input:focus {
+    background: #fff;
+    border: 1px solid #ffce51;
+}
+
+.search-input .input {
+    all: unset;
+    padding: 0.8rem 1rem;
+    flex-grow: 1;
+    background: none;
+}
+
+.search-input .input[placeholder="value"] {
+    color: #eee;
+}
+
+.search-input .bi {
+    padding: .8rem 1rem;
+    transition: color .5s ease;
+}
+
+.search-input:hover .bi,
+.search-input:focus .bi {
+    color: #ffce51;
+}
+
+/*------------- pannier */
+.pannier {
+    position: relative;
+}
+
+.pannier .notif {
+    position: absolute;
+    background: #f00;
+    top: 10%;
+    right: -50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+}
+
+.pannier .bi-cart-fill {
+    color: #858585;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.pannier .bi-cart-fill:hover {
+    color: #505050;
+}
+
+section {
+    display: flex;
+    padding-block-start: 2rem;
+    padding-block-end: 1rem;
+    padding-inline: 1rem;
+    gap: 1rem;
+}
+
+aside {
+    /* display: none; */
+    width: 600px;
+    background: #fff;
+    border-radius: 30px;
+    padding-bottom: 1rem;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: auto;
+    padding: 0;
+    max-height: 600px;
+}
+
+/* content */
+.content {
+    flex-grow: 1;
+}
+
+/* aside style */
+
+aside .header {
+    height: 60px;
+    justify-content: space-between;
+    box-shadow: none;
+    padding-inline: 1rem;
+}
+
+aside .header .brand {
+    display: flex;
+    align-items: center;
+}
+
+aside .header .brand .logo {
+    width: 40px;
+    height: 40px;
+    background: #fafafa;
+}
+
+aside .header .actions .close {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    transition: background .5 ease;
+}
+
+aside .header .actions .close:hover {
+    background: #fafafa;
+}
+
+aside .image-produit {
+    background: #fafafa;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+aside .description-produit {
+    padding: 1rem;
+    /* border: 1px solid #000; */
+    /* overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; */
+    display: flex;
+    flex-direction: column;
+}
+
+aside .description-produit .top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+aside .description-produit .top .prod-nom-prix {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+aside .description-produit .top .prod-nom-prix .prix {
+    font-size: 12px;
+}
+
+aside .description-produit .controls {
+    gap: .2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+aside .description-produit .controls .quantite {
+    display: flex;
+    align-items: center;
+    background: #212121;
+    color: #ffce51;
+    gap: 1rem;
+    font-size: 12px;
+    padding: .3rem .5rem;
+    border-radius: 50px;
+
+}
+
+aside .description-produit .controls .couleurs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+aside .description-produit .controls .couleurs span {
+    background: #7f0707;
+    padding: .5rem;
+    border-radius: 50px;
+}
+
+aside .description-produit .controls .quantite .bi {
+    border-radius: 50px;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    transition: background .5s ease;
+    cursor: pointer;
+}
+
+aside .description-produit .controls .bi:hover {
+    background: #fff;
+    color: #212121;
+}
+
+aside .description-produit p {
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+aside .description-produit .btn-cart {
+    all: unset;
+    background: #ffce51;
+    color: #2d2d2e;
+    padding: .3rem .7rem;
+    text-align: center;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background .5s ease;
+}
+
+aside .description-produit .btn-cart:hover {
+    background: #ffa500;
+}
+
+aside .simulaire-produit {
+    display: grid;
+    grid-template-rows: repeat(2, 200px);
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    grid-gap: 1rem;
+    padding-inline: 1rem;
+    padding-block-end: 1rem;
+}
+
+aside hr {
+    border: none;
+    background: #ddd;
+    height: 1px;
+}
+
+.simul-card {
+    /* background: #212121; */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 15px;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.simul-card .simul-card-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.simul-card .simul-card-img img {
+    transition: opacity 0.5s ease;
+}
+
+.simul-card:hover .simul-card-img img {
+    opacity: .8;
+}
+
+.simul-card .bottom {
+    display: flex;
+    padding: .5rem;
+    align-items: end;
+}
+
+.simul-card .prod-nom-prix {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+}
+
+.simul-card .prod-nom-prix .prix {
+    font-size: 12px;
+}
+
+.simul-card .bottom .bi-plus {
+    border-radius: 50px;
+    background: #ffa501;
+    color: #000;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    transition: background .5s ease;
+    cursor: pointer;
+}
+
+.simul-card .bottom .bi-plus:hover {
+    opacity: .8;
+}

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Product</title>
+        <link rel="stylesheet" href="assets/css/custom.css">
+        <link rel="stylesheet" href="assets/css/card.css">
+        <link rel="stylesheet" href="assets/css/searched-style.css">
+        <link rel="stylesheet" href="assets/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="assets/flag-icons-main/css/flag-icons.css">
+        <script src="assets/vue/vue.3.js"></script>
+    </head>
+
+    <body>
+        <div class="main" id="app" v-cloak>
+            <div class="header">
+                <div class="left-side">
+                    <div class="brand">
+                        <div class="logo">
+
+                        </div>
+                        <h3 class="brand-name">TU<span>G</span>URE</>
+                    </div>
+                    <div class="search-input">
+                        <input type="search" class="input" placeholder="Search...">
+                        <i class="bi bi-search"></i>
+                    </div>
+                </div>
+                <div class="pannier">
+                    <span class="notif" v-if='this.pannier.lenght =! ""'></span> <!--  -->
+                    <i class="bi bi-cart-fill"></i>
+                </div>
+            </div>
+            <section>
+                <article class="card-container">
+                    <!-- card product -->
+                    <div class="card" v-for="(produit, index) in produits" :key='index' @click="openSideBar(index)">
+                        <div class="origin">
+                            <div class="seller">
+                                <img v-if='photoVendeur != 0 ' src="assets/images/seller.png" alt="">
+                                <img v-else :src="photoVendeur" alt="">
+                            </div>
+                            <span class="fi fi-bi"></span>
+                        </div>
+                        <button class="like">
+                            <i class="bi bi-hand-thumbs-up"></i>
+                        </button>
+                        <button class="share">
+                            <i class="bi bi-share-fill"></i>
+                        </button>
+                        <!-- image -->
+                        <div class="card-image">
+                            <img :src="produit.photo" alt="">
+                        </div>
+                        <!-- details (product-name & price)-->
+                        <span class="card-details">
+                            <span class="product-infos">
+                                <b class="product-name">{{produit.produitNom}} </b>
+                                <span class="price">Price: <b>{{produit.produitPrix}}</b></span>
+                            </span>
+                            <span class="product-statement">
+                                <span class="vues_likes_share">
+                                    <i class="bi bi-eye-fill"></i> {{produit.produitVues}}
+                                    <i class="bi bi-hand-thumbs-up-fill"></i> {{produit.produitAimes}}
+                                    <i class="bi bi-share-fill"></i> {{produit.produitPartage}}
+                                </span>
+                            </span>
+                        </span>
+                        <!-- but btn -->
+                        <button class="buy-btn">Add to cart</button>
+                    </div>
+                </article>
+                <aside v-show="sideBarNotVisible">
+                    <div class="header">
+                        <div class="brand">
+                            <div class="logo">
+                                 <img v-if='photoVendeur != 0 ' src="assets/images/seller.png" alt="">
+                                 <img v-else :src="photoVendeur" alt="">
+                            </div>
+                            <div class="brand-name">Tugure</div>
+                        </div>
+                        <div class="actions">
+                            <div class="close"  @click="closeSideBar">
+                                <i class="bi bi-x"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-produit">
+                        <img :src="photo" alt="">
+                    </div>
+                    <div class="description-produit">
+                        <div class="top">
+                            <div class="prod-nom-prix">
+                                <b class="nom">{{produitNom}}</b>
+                                <b class="prix">{{produitPrix}}fbu</b>
+                            </div>
+                            <div class="controls">
+                                <div class="couleurs">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <div class="quantite">
+                                    <i class="bi bi-dash" @click="decrementQuantite"></i>
+                                    {{quantite}}
+                                    <i class="bi bi-plus" @click="incrementQuantite"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <h3>About </h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste dolor labore voluptatibus in
+                            perferendis ad commodi quasi aliquam quae eum! Dolor, laborum quis?</p>
+                        <button class="btn-cart">
+                            <i class="bi bi-cart"></i> Add To Cart
+                        </button>
+                    </div>
+                    <hr>
+                    <div class="simulaire-produit">
+                        <div class="simul-card">
+                            <div class="simul-card-img">
+                                <img src="assets/images/nike.jpg" alt="">
+                            </div>
+                            <div class="bottom">
+                                <div class="prod-nom-prix">
+                                    <b class="nom">Nike Air</b>
+                                    <b class="prix">200000fbu</b>
+                                </div>
+                                <div class="i bi bi-plus"></div>
+                            </div>
+                        </div>
+                        <div class="simul-card">
+                            <div class="simul-card-img">
+                                <img src="assets/images/timber.jpg" alt="">
+                            </div>
+                            <div class="bottom">
+                                <div class="prod-nom-prix">
+                                    <b class="nom">Nike Air</b>
+                                    <b class="prix">200000fbu</b>
+                                </div>
+                                <div class="i bi bi-plus"></div>
+                            </div>
+                        </div>
+                        <div class="simul-card">
+                            <div class="simul-card-img">
+                                <img src="assets/images/nike.jpg" alt="">
+                            </div>
+                            <div class="bottom">
+                                <div class="prod-nom-prix">
+                                    <b class="nom">Nike Air</b>
+                                    <b class="prix">200000fbu</b>
+                                </div>
+                                <div class="i bi bi-plus"></div>
+                            </div>
+                        </div>
+                        <div class="simul-card">
+                            <div class="simul-card-img">
+                                <img src="assets/images/timber.jpg" alt="">
+                            </div>
+                            <div class="bottom">
+                                <div class="prod-nom-prix">
+                                    <b class="nom">Nike Air</b>
+                                    <b class="prix">200000fbu</b>
+                                </div>
+                                <div class="i bi bi-plus"></div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+        </div>
+    </body>
+    <script>
+    const { createApp } = Vue;
+    createApp({
+        data() {
+            return{
+                sideBarNotVisible: false,
+                produits: [
+                    {
+                        photo:"assets/images/timber.jpg",
+                        produitNom:'Timber Land',
+                        produitPrix:'250 000',
+                        produitVues:'10k',
+                        produitAimes:'8k',
+                        produitPartage:'3k',
+                        produitPaysOrigine:'Burundi',
+                    },
+                    {
+                        photo:"assets/images/nike.jpg",
+                        produitNom:'Nike Air',
+                        produitPrix:'230 000',
+                        produitVues:'10k',
+                        produitAimes:'8k',
+                        produitPartage:'3k',
+                        produitPaysOrigine:'Burundi',
+                    },
+                    {
+                        photo:"assets/images/timber.jpg",
+                        produitNom:'Timber Land',
+                        produitPrix:'250 000',
+                        produitVues:'10k',
+                        produitAimes:'8k',
+                        produitPartage:'3k',
+                        produitPaysOrigine:'Burundi',
+                    },
+                    {
+                        photo:"assets/images/nike.jpg",
+                        produitNom:'Nike Air',
+                        produitPrix:'230 000',
+                        produitVues:'10k',
+                        produitAimes:'8k',
+                        produitPartage:'3k',
+                        produitPaysOrigine:'Burundi',
+                    },
+                    {
+                        photo:"assets/images/timber.jpg",
+                        produitNom:'Timber Land',
+                        produitPrix:'250 000',
+                        produitVues:'10k',
+                        produitAimes:'8k',
+                        produitPartage:'3k',
+                        produitPaysOrigine:'Burundi',
+                    },
+                    {
+                        photo:"assets/images/nike.jpg",
+                        produitNom:'Nike Air',
+                        produitPrix:'230 000',
+                        produitVues:'10k',
+                        produitAimes:'8k',
+                        produitPartage:'3k',
+                        produitPaysOrigine:'Burundi',
+                    },
+                    {
+                        photo:"assets/images/timber.jpg",
+                        produitNom:'Timber Land',
+                        produitPrix:'250 000',
+                        produitVues:'10k',
+                        produitAimes:'8k',
+                        produitPartage:'3k',
+                        produitPaysOrigine:'Burundi',
+                    },
+                    {
+                        photo:"assets/images/nike.jpg",
+                        produitNom:'Nike Air',
+                        produitPrix:'230 000',
+                        produitVues:'10k',
+                        produitAimes:'8k',
+                        produitPartage:'3k',
+                        produitPaysOrigine:'Burundi',
+                    },
+                ],
+                pannier:[],
+                //------- SIDEBAR variables
+                photo:'',
+                produitNom:'',
+                produitPrix:'',
+                produitVues:'',
+                produitAimes:'',
+                produitPartage:'',
+                produitPaysOrigine:'',
+                quantite:1,    
+            }
+        },
+        methods: {
+            openSideBar(index) {
+                this.sideBarNotVisible = true;
+                this.photo = this.produits[index].photo;
+                this.produitNom = this.produits[index].produitNom;
+                this.produitPrix = this.produits[index].produitPrix;
+                this.produitVues = this.produits[index].produitVues;
+                this.produitAimes = this.produits[index].produitAimes;
+                this.produitPartage = this.produits[index].produitPartage;
+                this.produitPaysOrigine = this.produits[index].produitPaysOrigine;
+            },
+            closeSideBar() {
+                this.sideBarNotVisible = false;
+                this.photo = '';
+                this.produitNom = '';
+                this.produitPrix = '';
+                this.produitVues = '';
+                this.produitAimes = '';
+                this.produitPartage = '';
+                this.produitPaysOrigine = '';
+            },
+            incrementQuantite() {
+                this.quantite++;
+            },
+            decrementQuantite() {
+                if (this.quantite > 1) {
+                    this.quantite--;
+                }
+            },
+        }
+    }).mount('#app')
+</script>
+
+</html>
